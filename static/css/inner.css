@@ -1,0 +1,324 @@
+/* 
+
+Rolling Theme - CSS File
+
+USE THIS STYLE SHEET FOR INNER PAGE
+
+*/
+
+
+
+/* Page Navi*/
+.wp-pagenavi {padding:0; font-size:11px; clear:both; text-transform:uppercase; font-family: 'Oswald', sans-serif, arial;}
+.wp-pagenavi .pages{padding-right:10px; font-size:12px}
+.wp-pagenavi a, .wp-pagenavi a:visited{padding:4px 10px; margin:0 4px; }
+.wp-pagenavi .current{padding:4px 10px; margin:0 4px;}
+
+
+
+/* BLOG */
+.post{margin-bottom:39px; padding:0 0 46px 0; clear:both;}
+.post.singlepage{padding-bottom:38px;}
+.postimg{ position:relative; margin-bottom:20px;}
+.postimg img{display:block;}
+.posttitle{margin:0 0 0 0}
+.posttitle, .posttitle a{font-size:18px; font-weight:400; line-height:24px; text-transform:uppercase}
+.posttitle a:hover{text-decoration:none;}
+
+.entry-text{overflow:hidden;}
+.entry-content {margin:0; padding:12px 0 5px 0;}
+.entry-content p{ margin-bottom:9px;}
+
+.entry-utility2{float:left; overflow:hidden; text-align:center; margin:5px 30px 28px 0; }
+.entry-utility2 span{ display:block; font-family: 'Oswald', sans-serif, arial; font-weight:400; text-transform:uppercase; padding-bottom:4px}
+.postmonth{ padding:0; font-size:13px;}
+.postdate{font-size:18px;}
+.postyear{font-size:13px; padding-bottom:0 !important}
+.postcomm{font-size:18px; padding-bottom:0 !important}
+.postcommtext{font-size:9px; padding-bottom:0 !important}
+.entry-date, .entry-comment{padding:10px 14px;}
+
+.entry-utility{padding:0px 0; margin-top:20px; clear:both; font-family: 'Oswald', sans-serif, arial; text-transform:uppercase;}
+.user, .tag{ float:left; padding:6px 19px;}
+
+div.like, div.like:before{ float:right; border-right:0px!important; padding:6px 20px 0px!important;}
+
+.entry-utility div {
+
+    position: relative;
+    z-index: 10;
+}
+.entry-utility div:before {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.author{margin-bottom:20px; width:100%; float:left}
+
+#comment h2{font-family:'Oswald', Arial;}
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.commentlist ol{
+	list-style-type:none;
+	padding:30px 0 0 65px;
+	margin:0;
+	
+}
+
+.commentlist li{
+	position:relative;
+	margin:0 0 30px 0;
+}
+.commentlist li li{
+	position:relative;
+	padding:0;
+}
+
+
+.avatar-img{
+	position:absolute;
+	top:20px;
+	left:20px;
+	background:url(../images/shadow-mini.gif) no-repeat center bottom;
+	padding-bottom:6px;
+}
+.avatar{display:block}
+.fn{font-size:11px; font-family:'Oswald', Arial; text-transform:uppercase}
+
+.tdate, .reply{ font-size:11px; font-family:'Oswald', Arial; text-transform:uppercase}
+.reply a, .reply a:visited{}
+.reply a:hover{text-decoration:underline;}
+.fn a, .fn a:visited{}
+
+.comment-body{margin:0 0 0 0px; padding:18px; padding-left:100px;}
+.comment-body p{ margin-bottom:5px; margin-top:10px;}
+.comment-body .more{ padding:0px 0px;}
+#commentform {margin-bottom:20px}
+#commentform label{display:block}
+#commentform .text-input{
+	margin-bottom:8px;
+	padding:8px 5px;
+	vertical-align:middle;
+}
+#commentform .textarea{
+	margin-bottom:20px;
+	padding:8px 5px;
+	vertical-align:top;
+}
+
+/* PORTFOLIO */
+
+/*======= Portfolio Navigation =======*/
+#frame-filter{ text-align:center; margin:-20px auto 20px auto; width:40%; }
+#filter{
+	list-style-type:none;
+	padding:0px 0px;
+	margin:0px;
+	float:left;
+}
+#filter li{list-style-type:none; padding:5px 15px; line-height:20px; float:left;}
+#filter li:first-child{border-left:0;}
+#filter li:last-child{border-right:0;}
+#filter li a, #filter li a:visited{ padding:10px 0px; }
+/*======= Portfolio Navigation =======*/
+
+
+#ts-display{position:relative; overflow:hidden; width: 110%;	padding: 0px; list-style-type:none; padding:0; margin:0; clear:both}
+#ts-display li{position:relative; }
+.ts-display-pf-img{position:relative;}
+.ts-display-clear{clear:both; height:1px !important; line-height:1px !important; float:none!important}
+.ts-display-pf-text{padding:12px 18px 20px 18px; text-align:center}
+.ts-display-pf-text h2{
+	font-family: 'Oswald', sans-serif, arial; font-size:12px;  margin-bottom:14px; padding-bottom:25px; text-transform:uppercase;
+}
+
+
+.ts-display-pf-img{
+	overflow:hidden;	
+}
+
+.ts-display-pf-img img{
+	width:100%;
+}
+
+
+.ts-display-pf-img a.image{
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+.ts-display-pf-img .rollover{
+	background:url(../images/opacity.png) repeat;
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+	width:100%; height:100%;
+}
+
+.ts-display-pf-img .rollover .image{
+	background:url(../images/hover-zoom.png)no-repeat center center;
+	display:block;
+	width:26px; height:26px;
+	position:absolute;
+	top:42%;
+	left:120%;
+	margin:0px 0 -16px 5px;
+	text-indent:-9999px;
+}
+
+.ts-display-pf-img .rollover .link{
+	background:url(../images/hover-link.png) no-repeat center center;
+	display:block;
+	width:26px; height:26px;
+	position:absolute;
+	top:42%;
+	left:-20%;
+	margin:0px 0 -16px -30px;
+	text-indent:-9999px;
+}
+
+/*======= Portfolio 2 Item =======*/
+.ts-display-pf-col-2 li{
+	list-style-type:none; 
+	padding:0; 
+	margin:0px 10px 10px 0; 
+	width:465px; 
+	float:left;
+}
+
+.ts-display-pf-col-2 .ts-display-pf-img img{display:block; max-width:100%;}
+
+.ts-display-pf-col-2 li.nomargin{margin-right:0 !important;}
+
+.ts-display-pf-col-2 .ts-display-pf-img{
+	width:465px; 
+	height:100%;
+}
+
+
+
+/*======= Portfolio 3 Item =======*/
+.ts-display-pf-col-3 li{
+	list-style-type:none; 
+	padding:0; 
+	margin:0 10px 10px 0; 
+	width:307px; 
+	float:left;
+}
+.ts-display-pf-col-3 .ts-display-pf-img img{display:block; max-width:100%;}
+
+.ts-display-pf-col-3 li.nomargin{margin-right:0;}
+
+.ts-display-pf-col-3 .ts-display-pf-img{
+	width:307px; 
+	height:100%;
+}
+
+
+
+/*======= Portfolio 4 Item =======*/
+.ts-display-pf-col-4 li{
+	list-style-type:none; 
+	padding:0; 
+	margin:0 10px 10px 0; 
+	width:227px; 
+	float:left;
+}
+.ts-display-pf-col-4 .ts-display-pf-img img{display:block; max-width:100%;}
+
+.ts-display-pf-col-4 li.nomargin{margin-right:0;}
+
+.ts-display-pf-col-4 .ts-display-pf-img{
+	width:227px; 
+	height:100%;
+}
+
+
+
+/* ---------------------------- */
+/*       Isotope plugin
+/* ---------------------------- */
+
+.isotope-item {
+	z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-o-transition-property: height, width;
+	transition-property: height, width;
+}
+
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform, opacity;
+	-o-transition-property: top, left, opacity;
+	transition-property: transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+	-webkit-transition-duration: 0s;
+	-moz-transition-duration: 0s;
+	-o-transition-duration: 0s;
+	transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+/* CONTACT */
+form{margin:0; padding:0;}
+fieldset{border:0px;}
+#contactform{margin:0 auto; position:relative; }
+#contactform label{display:block; width:100%; float:left; padding-bottom:5px;}
+span.required{ color:#888;}
+span.error{color:red;text-align:left; font-size:11px; padding-bottom:15px; display:block;}
+#contactform input.text-input{
+	margin-bottom:15px;
+	vertical-align:middle;
+	width:50%;
+	float:left;
+	font-style:italic;
+	padding:8px
+}
+#contactform textarea{ width:70%; float:left; font-style:italic} 
+#message{ margin-left:0px; font-weight:bold; color:#ff0000}
+#message h2	{}
+#message p{margin:6px 0px; }
+.note{ color:#d45454;}
+#contactform .button{
+	cursor:pointer;
+	margin-top:20px;
+	margin-right:7%;
+	clear:both;
+ }
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8" />
+	<title>{{title}}</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+
+	<!-- CSS
+  ================================================== -->
+  	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="static/css/skeleton.css" type="text/css />
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/inner.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="static/css/flexslider.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/color.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="static/css/prettyPhoto.css"  media="screen" />
+    
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="static/images/favicon.ico" />
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="static/images/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="static/images/apple-touch-icon-114x114.png" />
+    
+
+	<!-- ////////////////////////////////// -->
+	<!-- //      Javascript Files        // -->
+	<!-- ////////////////////////////////// -->
+
+	<script type="text/javascript" src="static/js/d3.v3.min.js"></script>
+	<script type="text/javascript" src="static/js/xregexp-all-min.js"></script>
+	<script type="text/javascript" src="static/js/queue.min.js"></script>
+	
+    
+</head>
+
+
+<body>
+<div id="wrapper">
+<div id="bodychild">
+	<div id="outercontainer">
+    
+        <!-- HEADER -->
+        <div id="outerheader">
+            <div class="container">
+            <header id="top" class="twelve columns">
+			<h1>WIKI OnlineLDA </h1>	
+                <div class="clear"></div>
+            </header>
+            </div>
+        </div>
+        <!-- END HEADER -->
+        
+        <!-- MAIN CONTENT -->
+        <div id="outermain" class="homepage">
+        	<div class="container">
+			<section id="graph" class="ten columns">
+			{% module Graph(topicNum) %}	
+			</section>
+			</div>
+        </div>
+		<div id="outermain" class="homepage">
+        	<div class="container">
+			<section id="graph" class="ten columns">
+			{% module Topic('./data/lambda-990.dat') %}	
+			</section>
+			</div>
+        </div>
+        <!-- END MAIN CONTENT -->
+        
+        <!-- FOOTER -->
+        <div id="outerfooter">
+        	<div class="container">
+        	<div id="footercontainer" class="twelve columns">
+            	<footer id="footer"><a href="#" rel="author">xunyuw</a></footer>
+            </div>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+        
+	</div><!-- end outercontainer -->
+</div><!-- end bodychild -->
+</div><!-- end wrapper -->
+
+</body>
+</html>

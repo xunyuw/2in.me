@@ -1,0 +1,366 @@
+/* 
+
+Rolling Theme - CSS File
+
+CHANGE COLOR STYLE
+
+*/
+
+body {
+	color:#666;
+	background-color:#e1e1e1;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:top center;
+	/* You can choose the background image from here. just take one of background-image from below. */
+	background-image:url(../images/bg-body.jpg);
+}
+
+#wrapper{background:#fff url(../images/pattern.png) repeat top;}
+
+#bodychild {
+	background:#777 url(../images/pattern2.png) repeat;
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+}
+
+/*============================================== GENERAL SECTION ==============================================*/
+a, .morelink{color:#fff;}
+a:hover, a.colortext:hover, .colortext a:hover, .morelink:hover{color:#eee}
+#logo h1 a, #logo h1 a:visited{color:#fff;}
+#topright .txt2 strong{color:#303030;}
+
+/* Heading & text */
+h1, h2, h3, h4, h5, h6, .title{color:#fff;}
+.pagedesc{color:#eee;}
+p{color:#fff;}
+/*============================================== HEADER AND MENU SECTION ==============================================*/
+#navigation{background:url(../images/bg-navigation.png) repeat;}
+.sf-menu a, .sf-menu a:visited{color:#fff;}/* 1st level */
+.sf-menu a:hover, .sf-menu li.current > a{color:#fff; background:#2e2e2e}/* 1st level */
+
+.sf-menu > li{border-left:solid 1px #525252; }
+
+.sf-menu > li:before {
+    border-left: 1px solid #303030;
+}
+
+
+.sf-menu li.first span{background-image:url(../images/icons/nav1.png); background-repeat:no-repeat; background-position:0 17px;}
+.sf-menu li.second span{background-image:url(../images/icons/nav2.png); background-repeat:no-repeat; background-position:0 17px}
+.sf-menu li.third span{background-image:url(../images/icons/nav3.png); background-repeat:no-repeat; background-position:0 17px}
+.sf-menu li.fourth span{background-image:url(../images/icons/nav4.png); background-repeat:no-repeat; background-position:0 17px}
+.sf-menu li.fifth span{background-image:url(../images/icons/nav5.png); background-repeat:no-repeat; background-position:0 17px}
+.sf-menu li.sixth span{background-image:url(../images/icons/nav6.png); background-repeat:no-repeat; background-position:0 17px}
+.sf-menu li.seventh span{background-image:url(../images/icons/nav7.png); background-repeat:no-repeat; background-position:0 17px}
+
+
+/* dropdown */
+.sf-menu li li, .sf-menu li li:hover, .sf-menu li li.sfHover{text-transform:capitalize}
+.sf-menu li li a, .sf-menu li li a:visited, .sf-menu li li a:hover, sf-menu li.current li a{color:#fff;}
+.sf-menu li li:hover{
+	background:#303030 ;
+}
+.sf-menu ul{background:url(../images/bg-navigation.png) repeat;}
+.sf-with-ul{}
+.sf-menu li li {border-bottom:solid 1px #525252; border-top:solid 1px #303030}
+.sf-menu li li:first-child{ border-top:0}
+.sf-menu li li:last-child{ border-bottom:0}
+
+.tinynav{background:#fff; border:1px solid #eaeaea;}
+
+
+/*============================================== SLIDER SECTION ==============================================*/
+.flex-caption h1{color:#fff}
+.flex-caption {color: #bbb;}
+
+
+/*============================================== BEFORE CONTENT SECTION ==============================================*/
+#pagetitle-container{border:solid 1px #eaeaea; border-width:0 0 1px 0} 
+
+/*============================================== CONTENT SECTION ==============================================*/
+
+.box{ background:#f2f2f2 url(../images/pattern3.gif) repeat; clear:both;}
+
+ul.services li h2{ color:#666;}
+ul.services li a:hover h2{ color:#444;}
+
+/* Form */
+input[type="text"],
+textarea, input[type="password"], select{
+	border:solid 1px #eaeaea;
+	color:#888;
+}
+label{ color:#333;}
+span.required{ color:#f00;}
+
+/* Horizontal Line */
+hr {
+	color:#eaeaea;
+	background-color:#eaeaea;
+}
+
+.separator.line{background:url(../images/sep.png) no-repeat center center}
+
+/* List */
+
+
+/* Button */
+.button, .button:visited, input[type="submit"]{
+	background: #444;
+	color:#fff;
+	border:0;
+}
+.button:hover, input[type="submit"]:hover{
+	background: #606060;
+	color:#fff;
+	border:0;
+}
+
+/* Blockquote */
+blockquote{color:#aaa;}
+
+
+/* Dropcaps */	
+.dropcap1{text-shadow:1px 1px 0 #ededed; color:#444}
+.dropcap2{color:#fff; background:#444}		
+.dropcap3{color:#fff; background:#444}
+
+/* Highlight */
+.highlight1{color:#fff; background:#444}	
+.highlight2{background:#efefef;  border:solid 1px #f7f7f7}
+.highlight3{border-bottom:dotted 1px #000}
+
+/* Code */
+code {
+	border-left:4px solid #e9e9e9;
+}
+
+/* Alert Box */
+.notification.error{
+	background:#ffeded;
+	border:solid 1px #fbc4c4;
+	color:#de5959;	
+}
+.notification.success{
+	background:#eff9e6;
+	border:solid 1px #b3dc82;
+	color:#5f9025;	
+}
+.notification.warning{
+	background:#fbfae4;
+	border:solid 1px #ded58a;
+	color:#8f872e;	
+}
+.notification.notice{
+	background:#eaf7fe;
+	border:solid 1px #b6d7e8;
+	color:#5091b2;	
+}
+		
+/* Tabs */
+#sidebar ul.tabs li {
+	background: #fafafa;
+	color:#444;
+	border:1px solid #eaeaea;
+	border-width:1px 1px 1px 0px;
+}
+ul.tabs li {
+	background: #fafafa;
+	color:#444;
+	border:1px solid #eaeaea;
+	border-width:1px 1px 1px 0px;
+}
+#sidebar ul.tabs li:first-child{ border-left:1px solid #eaeaea} 
+ul.tabs li:first-child{ border-left:1px solid #eaeaea} 
+
+#sidebar ul.tabs li a {color:#444;}
+ul.tabs li a {color:#444;}
+
+#sidebar ul.tabs li.active{
+	background: #fff; 
+	color:#666;
+	border-bottom:1px solid #fff;
+}
+
+ul.tabs li.active{
+	background: #fff; 
+	color:#666;
+	border-bottom:1px solid #fff;
+}
+
+html ul.tabs li.active a{ color:#666; }
+#tab-body{}
+
+/* jQuery Toggles */
+h2.trigger{color:#444;}
+h2.trigger span {color:#444}
+h2.active span{color:#666}
+h2.trigger span:hover {color:#666} 
+
+
+/* Tables */
+th{
+	background: #444; /* for non-css3 browsers */
+	color:#fff;
+	border-bottom: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+}
+thead th{border-right: 1px solid #eaeaea!important;}
+table {border: 1px solid #eaeaea;border-bottom:0; border-right:0px;}
+tr td {border-bottom: 1px solid #eaeaea; border-right: 1px solid #eaeaea;}
+tr.odd td {background: #F2F7FC;}
+
+
+
+/* Pricing Box */
+ul.list-box > li{
+	border:solid 1px #e9e9e9;
+	border-width:1px 0 1px 1px;
+	background:#fff;
+ }
+ul.list-box li.current{border-right:solid 1px #e9e9e9;}
+ul.list-box li.borderright{border-right:solid 1px #e9e9e9; border-left:0;}
+ul.list-box li.last{border-width:1px 1px 1px 0px;}
+ul.list-box .title-box{
+	color:#fff;
+	background: #444;
+	border-bottom: 1px solid #e9e9e9;
+}
+ul.list-box li.current .title-box{
+	color:#fff;
+	background: #666;
+}
+ul.list-box li.current .button{ background:#666;}
+ul.list-box li.current .button:hover{ background:#444;}
+ul.list-box .price-text{
+	color:#676767;
+	border-bottom:solid 1px #e9e9e9;
+}
+ul.list-box .price-text .price{color:#333;}
+.list-box-content ul li{
+	border-bottom:1px solid #e9e9e9;
+}
+
+
+
+
+/* Accordion */
+h2.accordion-title{background:#444; color:#fff}
+h2.accordion-title.active{background:#666; color:#fff;}
+
+
+/* Tagcloud */
+.tagcloud a{border:solid 1px #f3f3f3;}
+.tagcloud a:hover{border:solid 1px #303030; background:#303030; color:#fff !important;}
+
+
+/*============================================== BLOG SECTION ==============================================*/
+.post{background:url(../images/sep.png) no-repeat center bottom}
+.posttitle a, .posttitle a:visited{color:#444;}
+.posttitle a:hover{color:#666}
+
+.entry-utility2 {
+    background:#666;
+    color: #fff;
+}
+.postmonth {
+    color: #fff;
+}
+.entry-comment{ background:#303030;}
+.entry-comment a, entry-comment a:visited{color:#fff}
+
+.entry-utility{ color:#b1b1b1; border-bottom:1px solid #eaeaea;  background:#fafafa;}
+.entry-utility div{border-right:solid 1px #fff; }
+.entry-utility div:before {border-right: 1px solid #eaeaea;}
+.entry-utility a, .entry-utility a:visited{}
+.entry-utility a:hover{}
+
+
+.com-line{border-top:1px solid #f2f2f2;}
+.tdate, .reply a, .reply a:visited{color:#969696; }
+.comment-body{ background:#fff; border:solid 1px #eaeaea}
+.fn{color:#444;}
+
+.wp-pagenavi{}
+.wp-pagenavi a, .wp-pagenavi a:visited{color:#fff; background:#666}
+.wp-pagenavi .current, .wp-pagenavi a:hover{color:#fff; background:#444}
+
+/*============================================== PORTFOLIO SECTION ==============================================*/
+#filter{border:1px solid #eaeaea;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+#filter li{border-right:1px solid #eaeaea;
+	background: #efefef; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#efefef'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#efefef)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #fdfdfd,  #efefef); /* for firefox 3.6+ */
+	color:#666;
+}
+#filter li a, #filter li a:visited{ color:#666;}
+#filter li.current, #filter li:hover{background:#fbfbfb;}
+
+.ts-display-pf-text{border-bottom:solid 1px #eaeaea; background:#fafafa}
+.ts-display-pf-text h2{background:url(../images/sep-pf.png) no-repeat center bottom}
+.ts-display-pf-text h2 a, .ts-display-pf-text h2 a:visited{color:#444;}
+.ts-display-pf-text h2 a:hover{color:#666;}
+
+
+/*============================================== SIDEBAR SECTION ==============================================*/
+
+#sidebar li li{border-bottom:solid 1px #ededed;}
+#sidebar li li{ background:url(../images/arrow.png) no-repeat 0 10px; }
+
+#sidebar li a, #sidebar li li a{color:#666}
+#sidebar li a:hover, #sidebar li li a:hover, #sidebar li li a.current{color:#444;}
+
+#sidebar li.widget-container:last-child{background:transparent;}
+
+#sidebar ul.flickr li{border:0;}
+#sidebar .rp-widget li{border:0;}
+#sidebar .rp-widget li h3 a{}
+#sidebar .rp-widget .smalldate{color:#a1a1a1;}
+
+#sidebar .morelink{color:#444;}
+#sidebar .morelink:hover{color:#666}
+
+.gallery  a .rollover{background-color:#000;}
+
+
+/* Search */
+#searchform .bgsearch{background:#fff; border:1px solid #eaeaea;}
+.searchbutton[type="submit"]{
+	background: #f0f0f0; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f0f0f0'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f0f0f0)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #f9f9f9,  #f0f0f0); /* for firefox 3.6+ */
+	color:#666;
+	border-left:1px solid #eaeaea;
+}
+
+.searchbutton[type="submit"]:hover{
+	background: #f9f9f9; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#f9f9f9'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#f9f9f9)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #f0f0f0,  #f9f9f9); /* for firefox 3.6+ */
+	color:#666;
+	border-left:1px solid #eaeaea;
+}
+
+/* Tag */
+.tags a{border:solid 1px #f0f0f0; color:#888;}
+.tags a:hover{background:#f8f8f8; color:#888}
+
+
+
+/*============================================== FOOTER SECTION ==============================================*/
+#outerfooter{}
+#footercontainer{}
+#footer{color:#fff;}
+#footer a, #footer a:visited{color:#eee;}
+#footer a:hover{color:#fff;}
+
+

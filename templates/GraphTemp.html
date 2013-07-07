@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+
+#chart {
+  margin-left: -40px;
+  height: 506px;
+}
+
+text {
+  font: 12px sans-serif;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  font: 12px;
+  fill: #eee;
+}
+
+.iter.label {
+  font: 500 196px "Helvetica Neue";
+  fill: #ddd;
+}
+
+.iter.label.active {
+  fill: #aaa;
+}
+
+.topic.label {
+  font: 18px sans-serif;
+  fill: #ddd;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
+}
+
+</style>
+
+<h1 id='topics'></h1>
+
+<p id="chart"></p>
+
+<footer>
+  <aside>{{ date }}</aside>
+</footer>
+
+<script src="http://d3js.org/d3.v2.js?2.8.1"></script>
+<script>
+
+
+
+var wordsInTopic = 10;
+var tmpWords = 0;
+// Various accessors that specify the four dimensions of data to visualize.
+function x(d) { return d.posit; }
+function y(d) { return d.percent; }
+function radius(d) { return d.percent; }
+function color(d) { return d.color; }
+function key(d) { return d.name; }
+
+// Chart dimensions.
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+    width = 960 - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// Various scales. These domains make assumptions of data, naturally.
+var xScale = d3.scale.linear().domain([0, 8000]).range([0, width]),
+    yScale = d3.scale.sqrt().domain([0, 40]).range([height, 0]),
+    radiusScale = d3.scale.sqrt().domain([0, 40]).range([0, 50]),
+    colorScale = d3.scale.category10();
+
+// The x & y axes.
+var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d")),
+    yAxis = d3.svg.axis().scale(yScale).orient("left");
+	
+
+// Create the SVG container and set the origin.
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+// Add the x-axis.
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+// Add the y-axis.
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+// Add an x-axis label.
+svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height - 6)
+    .text("Words");
+
+// Add a y-axis label.
+svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("ranking %");
+
+// Add the iter label; the value is set on transition.
+var label = svg.append("text")
+    .attr("class", "iter label")
+    .attr("text-anchor", "end")
+    .attr("y", margin.top + 124)
+    .attr("x", width)
+    .text("00");
+
+// Load the data.
+d3.json({{ filename }}, function(lda) {
+
+  // A bisector since many nation's data is sparsely-defined.
+  var bisect = d3.bisector(function(d) { 
+		return d[0]; 
+	});
+
+  // Add a dot per nation. Initialize the data at 0, and set the colors.
+  var dot = svg.append("g")
+      .attr("class", "dots")
+      .selectAll(".dot")
+      .data(interpolateData(0))
+      .enter().append("circle")
+      .attr("class", "dot")
+      .style("fill", function(d) { return color(d); })
+      .call(position);
+
+  // Add a title.
+ var title = dot.append("title")
+      .text(function(d) { return key(d); });
+
+ // Add a Text
+  dot.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.name; });
+
+  // Add an overlay for the year label.
+  var box = label.node().getBBox();
+
+  var overlay = svg.append("rect")
+        .attr("class", "overlay")
+        .attr("x", box.x)
+        .attr("y", box.y)
+        .attr("width", box.width)
+        .attr("height", box.height)
+        .on("mouseover", enableInteraction);
+
+  // Start a transition that interpolates the data based on year.
+  svg.transition()
+      .duration(3000)
+      .ease("linear")
+      .tween("iter", tweenIter)
+      .each("end", enableInteraction);
+
+  // Positions the dots based on data.
+  function position(dot) {
+    dot .attr("cx", function(d) { return xScale(x(d)); })
+        .attr("cy", function(d) { return yScale(y(d)); })
+        .attr("r", function(d) { return radiusScale(radius(d)); });
+
+
+  }
+
+  function showTopic(dot) {
+    dot .select('title')
+	.text(function(d)
+	 { 
+		if (tmpWords < wordsInTopic)
+		{	
+			d3.select('#topics')
+			  .append('text')
+			  .attr("class", "topic label")
+   			  .text(d.name + '\t')
+			  .style("color", d.color);
+			tmpWords++;
+		}
+		return d.name + '\n' + Math.round(d.percent*100)/100 + '%'; 
+         });
+  }
+
+   function order(a, b) {
+    return radius(b) - radius(a);
+  } 
+  
+
+  // After the transition finishes, you can mouseover to change the year.
+  function enableInteraction() {
+    var iterScale = d3.scale.linear()
+        .domain([0, {{MaxIter - 1}}])
+        .range([box.x + 10 , box.x + box.width - 10])
+        .clamp(true);
+
+    // Cancel the current transition, if any.
+    svg.transition().duration(0);
+
+    overlay
+        .on("mouseover", mouseover)
+        .on("mouseout", mouseout)
+        .on("mousemove", mousemove)
+        .on("touchmove", mousemove);
+
+    function mouseover() {
+      label.classed("active", true);
+    }
+
+    function mouseout() {
+      label.classed("active", false);
+    }
+
+    function mousemove() {
+      displayIter(iterScale.invert(d3.mouse(this)[0]));
+    }
+  }
+
+  // Tweens the entire chart by first tweening the year, and then the data.
+  // For the interpolated data, the dots and label are redrawn.
+  function tweenIter() {
+    var iterNum = d3.interpolateNumber(0, {{MaxIter -1}});
+    return function(t) { displayIter(iterNum(t)); };
+  }
+
+  // Updates the display to show the specified year.
+  function displayIter(iterNum) {
+	tmpWords = 0;
+	d3.select('#topics').selectAll('Text').remove();
+	d3.select('#topics').append('text').attr("class", "topic label").text('Topic: ').style("color", '#ffffff');
+	var tmpData = dot.data(interpolateData(iterNum));
+	tmpData.call(position);
+	tmpData.sort(order).call(showTopic);
+    label.text(Math.round(iterNum)*10);
+  }
+
+  // Interpolates the dataset for the given (fractional) year.
+  function interpolateData(iterNum) {
+    return lda.map(function(d) {
+      return {
+        name: d.word,
+        percent: interpolateValues(d.percent, iterNum) * 100,
+		posit: interpolateValues(d.posit,iterNum),
+		iter: iterNum,
+		color: d.color
+      };
+    });
+  }
+
+  // Finds (and possibly interpolates) the value for the specified iter.
+  function interpolateValues(values, iterNum) {
+    var j = Math.round(iterNum);
+	for (var i=0;i<values.length;i++){
+		var s1 = values[i];
+		if (s1[1] == j){return s1[0];}
+	}
+	return 0.001;
+
+  }
+});
+
+</script>
+
