@@ -76,8 +76,8 @@ def parse_doc_list(docs, vocab):
                 if (not wordtoken in ddict):
                     ddict[wordtoken] = 0
                 ddict[wordtoken] += 1
-        wordids.append(ddict.keys())
-        wordcts.append(ddict.values())
+        wordids.append(list(ddict.keys()))
+        wordcts.append(list(ddict.values()))
 
     return((wordids, wordcts))
 

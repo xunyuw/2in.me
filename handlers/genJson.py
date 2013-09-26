@@ -3,7 +3,7 @@
 
 import tornado.web
 import sys, os, json
-import cPickle, string, numpy, getopt, sys, random, time, re, pprint
+import pickle, string, numpy, getopt, sys, random, time, re, pprint
 
 from lib import onlineldavb
 from lib import wikirandom
@@ -11,85 +11,86 @@ from lib import wikirandom
 #from model.entity import Entity
 
 class genJsonHandler(tornado.web.RequestHandler):
+    """
+        create or refresh Json file for LDA data.
+    """
+
     def get(self):
-	"""
-    	create or refresh Json file for LDA data.
-    	"""
-	
-	iterNum = 0
-	topicsNum = 0
-	wordsNum = 0
-	for root, dirs, files, in os.walk('./data/'):
-		for f in files:
-			if str(f).find('lambda') >= 0:
-				tmpStr = filter(str.isdigit, f)
-				iter = string.atoi(tmpStr, 10)/10	
-				if iter > iterNum:
-					iterNum = iter
-				if topicsNum == 0:
-					testlambda = numpy.loadtxt(root+f)
-					(topicsNum,wordsNum) = testlambda.shape
-			elif str(f).find('gamma') >= 0:
-				print ('gamma' + f)
-	iterNum = iterNum+1
-	matrix = numpy.zeros((wordsNum*iterNum*topicsNum))
-	matrix.shape = wordsNum, iterNum, topicsNum
-	#matrix =  [[0 for col in range(iterNum)] for row in range(topicsNum)]
-	#for i in range (topicsNum):
-	#	for j in range (iterNum):
-	#		matrix[i][j] = numpy.zeros(wordsNum)	
 
-	print matrix.shape
-	for root, dirs, files, in os.walk('./data/'):
-		for f in files:
-			if str(f).find('lambda') >= 0:
-				tmpStr = filter(str.isdigit, f)
-				iter = string.atoi(tmpStr, 10)/10
-				testlambda = numpy.loadtxt(root+f)
-				(topicsNum,wordsNum) = testlambda.shape
-				for k in range(0, len(testlambda)):
-					lambdak = list(testlambda[k, :])
-					lambdak = lambdak / sum(lambdak)
-					#print ("k = %d, iter = %d" % (k, iter))
-					#print len(testlambda)
-					#print topics[k].shape
-					for i in range(0, len(lambdak)):
-						#print ("i = %d, k = %d, iter = %d" % (i, k, iter))
-						matrix[i,iter,k] = lambdak[i]
-				
-			elif str(f).find('gamma') >= 0:
-				print ('gamma' + f)
-	
-	file_obj = open('./lib/dictnostops.txt')
-	vocab = str.split(file_obj.read())
-	
-	for i in range (topicsNum):
-		outMatrix = [] 
-		f=open('./static/json/t'+ str(i+1) +'.json','w')
-		for j in range (wordsNum):
-			outWord = {}
-			percent = []
-			outWord['word'] = vocab[j]
-			for k in range (iterNum):
+        iteration_num = 0
+        topics_num = 0
+        words_num = 0
+        for root, dirs, files, in os.walk('./data/'):
+            for f in files:
+                if str(f).find('lambda') >= 0:
+                    tmp_str = list(filter(str.isdigit, f))
+                    iterations = string.atoi(tmp_str, 10)/10
+                    if iterations > iteration_num:
+                        iteration_num = iterations
+                    if topics_num == 0:
+                        test_lambda = numpy.loadtxt(root+f)
+                        (topics_num,words_num) = test_lambda.shape
+                elif str(f).find('gamma') >= 0:
+                    print(('gamma' + f))
+        iteration_num += 1
+        matrix = numpy.zeros((words_num*iteration_num*topics_num))
+        matrix.shape = words_num, iteration_num, topics_num
+        #matrix =  [[0 for col in range(iterNum)] for row in range(topicsNum)]
+        #for i in range (topicsNum):
+        #	for j in range (iterNum):
+        #		matrix[i][j] = numpy.zeros(wordsNum)
 
-				#print matrix[:,k,i]
-				#temp = matrix[:,k,i]
-				#sortedIndx = [sorted(temp).index(n) + 1 for n in temp]
-				#sortedIndx = [sorted(matrix[:,k,i]).index(n) + 1 for n in matrix[:,k,i]]
-				#print sortedIndx
-				#print ("i = %d, k = %d, j = %d" % (i, k, j))
-				#position = [sortedIndx[k]] + [k]
-				tmpPer = [matrix[j,k,i]] + [k]	
-				percent.append(tmpPer)
-				#print position
-				#print percent
-			outWord['percent'] = percent
-			outMatrix.append(outWord)
-		
-		encodedjson = json.dumps(outMatrix,sort_keys=True)
-		print >> f, encodedjson
-		f.close
+        print(matrix.shape)
+        for root, dirs, files, in os.walk('./data/'):
+            for f in files:
+                if str(f).find('lambda') >= 0:
+                    tmp_str = list(filter(str.isdigit, f))
+                    iterations = string.atoi(tmp_str, 10)/10
+                    test_lambda = numpy.loadtxt(root+f)
+                    (topics_num,words_num) = test_lambda.shape
+                    for k in range(0, len(test_lambda)):
+                        lambda_k = list(test_lambda[k, :])
+                        lambda_k = lambda_k / sum(lambda_k)
+                        #print ("k = %d, iter = %d" % (k, iter))
+                        #print len(testlambda)
+                        #print topics[k].shape
+                        for i in range(0, len(lambda_k)):
+                            #print ("i = %d, k = %d, iter = %d" % (i, k, iter))
+                            matrix[i,iterations,k] = lambda_k[i]
 
-	#title = Entity.get('LDA ')
+                elif str(f).find('gamma') >= 0:
+                    print(('gamma' + f))
+
+        file_obj = open('./lib/dict_no_stops.txt')
+        vocab = str.split(file_obj.read())
+
+        for i in range (topics_num):
+            out_matrix = []
+            f=open('./static/json/t'+ str(i+1) +'.json','w')
+            for j in range (words_num):
+                out_word = {}
+                percent = []
+                out_word['word'] = vocab[j]
+                for k in range (iteration_num):
+
+                    #print matrix[:,k,i]
+                    #temp = matrix[:,k,i]
+                    #sortedIndx = [sorted(temp).index(n) + 1 for n in temp]
+                    #sortedIndx = [sorted(matrix[:,k,i]).index(n) + 1 for n in matrix[:,k,i]]
+                    #print sortedIndx
+                    #print ("i = %d, k = %d, j = %d" % (i, k, j))
+                    #position = [sortedIndx[k]] + [k]
+                    tmp_percentage = [matrix[j,k,i]] + [k]
+                    percent.append(tmp_percentage)
+                    #print position
+                    #print percent
+                out_word['percent'] = percent
+                out_matrix.append(out_word)
+
+            encoded_json = json.dumps(out_matrix,sort_keys=True)
+            print(encoded_json, file=f)
+            f.close
+
+        #title = Entity.get('LDA ')
         self.render('index.html', title = 'test')
 
